@@ -1,0 +1,26 @@
+{
+  "name": "booktrade",
+  "version": "1.0.0",
+  "description": "Booking trading application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://hcuffy@github.com/hcuffy/Booktrade.git"
+  },
+  "author": "Henry Cuffy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hcuffy/Booktrade/issues"
+  },
+  "homepage": "https://github.com/hcuffy/Booktrade#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "ejs": "^2.5.7",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.10"
+  }
+}

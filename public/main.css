@@ -1,0 +1,23 @@
+body {
+  text-align: center;
+}
+
+figure {
+  float: left;
+  width: 180px;
+}
+
+.figure_div {
+  margin-left: 20px;
+  display: inline-block;
+}
+
+.search_results {
+  margin: auto;
+}
+
+nav {
+  height: 100px;
+  background-color: #42bcf4;
+  margin-bottom: 30px;
+}
