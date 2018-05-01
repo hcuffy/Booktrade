@@ -22,18 +22,13 @@ exports.createNewUser = (req, res, next) => {
   });
 }
 
-
-
 exports.getProfile = (req, res, next) => {
     res.render('profile')
-
 }
 
 exports.getRegistration = (req, res, next) => {
     res.render('register')
-
 }
-
 
 exports.getLogout = (req, res, next) => {
   req.session.destroy(function(err) {

@@ -23,29 +23,31 @@
     Add Book: <input type="text" name="search">
     <input type="submit" value="Add">
   </form>
-<hr>
-<h3>Trade Requests</h3>
-<hr>
+  <hr>
+  <h3>
+    Trade Requests
+  </h3>
+  <hr>
 
-<div class="search_results">
-  <%for (var i = 0; i < books.length; i++){ %>
-    <div class="request-div">
-      <figure class="figure-comp">
-        <button type="button" class="btn btn-sm btn-outline-secondary">
-          <i class="fas fa-exchange-alt"> </i>
-        </button>
-        <img src="<%=books[i].cover%>" alt="No Cover Available" width="180" height="270">
-        <figcaption>
-          <%= books[i].title %>
-        </figcaption>
-      </figure>
-      <%}%>
-    </div>
-</div>
+  <div class="search_results">
+    <%for (var i = 0; i < books.length; i++){ %>
+      <div class="request-div">
+        <figure class="figure-comp">
+          <button type="button" class="btn btn-sm btn-outline-secondary">
+            <i class="fas fa-exchange-alt"> </i>
+          </button>
+          <img src="<%=books[i].cover%>" alt="No Cover Available" width="180" height="270">
+          <figcaption>
+            <%= books[i].title %>
+          </figcaption>
+        </figure>
+        <%}%>
+      </div>
+  </div>
 
-<hr>
-<h3 class="myBooks">My Books</h3>
-<hr>
+  <hr>
+  <h3 class="myBooks">My Books</h3>
+  <hr>
 
   <div class="search_results">
     <%for (var i = 0; i < books.length; i++){ %>
