@@ -1,27 +1,34 @@
 <html>
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
   <link href="/main.css" rel="stylesheet" type="text/css">
-  <title>Books</title>
+  <title>My Books</title>
 </head>
 
 <nav>
   <p>
     Book Trading Club
   </p>
-  <button type="button" class="btn btn-primary">My Books</button>
+  <button type="button" class="btn btn-primary">All Books</button>
 </nav>
 
 <body>
+  <form action="/search" method="get">
+    Add Book: <input type="text" name="search">
+    <input type="submit" value="Add">
+  </form>
+
   <div class="search_results">
     <%for (var i = 0; i < books.length; i++){ %>
       <div class="figure_div">
         <figure>
-          <button type="button" class="btn btn-outline-primary">Trade</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary">
+            <i class="fas fa-exchange-alt"> </i>
+          </button>
           <img src="<%=books[i].cover%>" alt="No Cover Available" width="180" height="270">
           <figcaption>
             <%= books[i].title %>
@@ -30,6 +37,6 @@
         <%}%>
       </div>
   </div>
+  <span class="glyphicon glyphicon-transfer"></span>
 </body>
-
 </html>

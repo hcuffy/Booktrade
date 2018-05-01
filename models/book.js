@@ -3,7 +3,9 @@ const Schema = mongoose.Schema;
 
 const BookSchema = new Schema({
   title: String,
-  cover: String
+  cover: String,
+  owner: [String],
+  trader: [String]
 }, {
   timestamps: true
 });

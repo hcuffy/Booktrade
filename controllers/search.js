@@ -16,14 +16,25 @@ exports.getSearch = (req, res, next) => {
   axios.get(url).then(function (response) {
     let cover = 'http://covers.openlibrary.org/b/id/'+ response.data.docs[0].cover_i +'-M.jpg';
     let title = response.data.docs[0].title_suggest;
-
-    const newBook = new Book({title, cover})
+console.log(response.data);
+    const newBook = new Book({title, cover , owner : [], trader :[]})
       newBook.save(err => {
         if (err)
+
         return next(err)
       });
     res.send('Good');
   }).catch(function (error) {
     console.log(error);
   });
+}
+
+
+exports.getMyBooks = (req, res, next) => {
+  Book.find({}, (err, books) => {
+    if (err)
+      return next(err)
+    res.render('mybooks', {books})
+  });
+
 }
