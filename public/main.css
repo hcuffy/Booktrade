@@ -60,3 +60,13 @@ hr {
 .profile-input {
   margin-bottom: 10px;
 }
+
+.fa-sign-out-alt {
+  color: black;
+  float: right;
+  margin-right: 20px;
+  font-size: 35px;
+  border-left: 3px solid black;
+  overflow: hidden;
+  padding-left: 20px;
+}
