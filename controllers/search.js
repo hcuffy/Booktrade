@@ -49,7 +49,9 @@ exports.getMyBooks = (req, res, next) => {
     }
     let myBooks  = books.filter( book => book.owner.includes(req.user.id));
     let reqBooks  = myBooks.filter( book => book.trader.length > 0);
-    res.render('mybooks', {myBooks , reqBooks })
+    let accBooks  = myBooks.filter( book => book.accepted.includes(req.user.id));
+console.log(accBooks);
+    res.render('mybooks', {myBooks , reqBooks, accBooks})
   });
 
 }
@@ -58,9 +60,31 @@ exports.tradeRequest = (req, res, next) => {
 const { id}=req.body;
 
 Book.update({_id : id}, { $push: { trader: req.user.id } },  function (err, book) {
-  if (err) return check(err);
+  if (err) return next(err);
 
   res.send(['OK'])
+});
+
+}
+
+exports.acceptRequest = (req, res, next) => {
+const { id } = req.body;
+
+console.log('st'  + id);
+
+Book.findById({_id : id}, (err, book) => {
+  if (err)
+    return next(err)
+
+let accepted = { acceptor: req.user.id, requestor: book.trader[0] }
+
+console.log(accepted);
+Book.update({_id : id}, { $push: { accepted: accepted } },  function (err, book) {
+  if (err) return next(err);
+
+  res.send(['OK'])
+});
+
 });
 
 }

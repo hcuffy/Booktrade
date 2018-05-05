@@ -5,7 +5,8 @@ const BookSchema = new Schema({
   title: String,
   cover: String,
   owner: [String],
-  trader: [String]
+  trader: [String],
+   accepted : [],
 }, {
   timestamps: true
 });

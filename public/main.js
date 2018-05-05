@@ -14,4 +14,20 @@ $(document).ready(function() {
       }
     });
   })
+
+  $('.btn-outline-secondary').click( function () {
+    $.ajax({
+      url: '/book/trading/',
+      type: 'POST',
+      data: {id:this.id},
+      success: function(result) {
+        document.location.href = '/book/myBooks/';
+      },
+      error: function() {
+        alert('Cannot update book. Something went wrong.');
+      }
+    });
+  })
+
+
 });

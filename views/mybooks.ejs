@@ -33,7 +33,7 @@
       <%for (var i = 0; i < reqBooks.length; i++){ %>
         <div class="request-div">
           <figure class="figure-comp">
-            <button type="button" class="btn btn-sm btn-outline-secondary">
+            <button type="button" id="<%=reqBooks[i].id%>" class="btn btn-sm btn-outline-secondary">
               <i class="fas fa-exchange-alt"> </i>
             </button>
             <img src="<%=reqBooks[i].cover%>" alt="No Cover Available" width="180" height="270">
@@ -45,6 +45,23 @@
         </div>
     </div>
   <%}%>
+  <hr>
+  <h3>
+    Accepted Trades
+  </h3>
+  <hr>
+  <%if (accBooks.length > 0){ %>
+    <div class="search_results">
+      <%for (var i = 0; i < accBooks.length; i++){ %>
+        <div class="figure_div">
+            <label class="req-label">
+              <%= accBooks[i].title %>
+            </label>
+          <%}%>
+        </div>
+    </div>
+  <%}%>
+
   <hr>
   <h3 class="myBooks">My Books</h3>
   <hr>
@@ -62,5 +79,8 @@
         </div>
     </div>
   <%}%>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/main.js"></script>
 </body>
 </html>
