@@ -49,8 +49,25 @@ exports.getMyBooks = (req, res, next) => {
     }
     let myBooks  = books.filter( book => book.owner.includes(req.user.id));
     let reqBooks  = myBooks.filter( book => book.trader.length > 0);
-    let accBooks  = myBooks.filter( book => book.accepted.includes(req.user.id));
-console.log(accBooks);
+
+    function checkAcc(theBooks) {
+    let checkedBooks  = [];
+      theBooks.forEach(function (a) {
+        a.accepted.forEach(function (b) {
+
+          if (b.acceptor == req.user.id) {
+            checkedBooks.push(a);
+          }
+        });
+      });
+
+      return checkedBooks;
+
+    }
+
+    let accBooks  = checkAcc(myBooks);
+
+
     res.render('mybooks', {myBooks , reqBooks, accBooks})
   });
 
