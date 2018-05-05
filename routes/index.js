@@ -5,8 +5,6 @@ const userController = require('../controllers/user');
 
 router.use('/book', require('./books'));
 router.use('/user', require('./users'));
-
-// router.get('/search', searchController.getSearch);
 router.get('/register', userController.getRegistration);
 router.get('/', (req, res) => {
   res.render('index');

@@ -28,39 +28,39 @@
     Trade Requests
   </h3>
   <hr>
-
-  <div class="search_results">
-    <%for (var i = 0; i < books.length; i++){ %>
-      <div class="request-div">
-        <figure class="figure-comp">
-          <button type="button" class="btn btn-sm btn-outline-secondary">
-            <i class="fas fa-exchange-alt"> </i>
-          </button>
-          <img src="<%=books[i].cover%>" alt="No Cover Available" width="180" height="270">
-          <figcaption>
-            <%= books[i].title %>
-          </figcaption>
-        </figure>
-        <%}%>
-      </div>
-  </div>
-
+  <%if (reqBooks.length > 0){ %>
+    <div class="search_results">
+      <%for (var i = 0; i < reqBooks.length; i++){ %>
+        <div class="request-div">
+          <figure class="figure-comp">
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              <i class="fas fa-exchange-alt"> </i>
+            </button>
+            <img src="<%=reqBooks[i].cover%>" alt="No Cover Available" width="180" height="270">
+            <figcaption>
+              <%= reqBooks[i].title %>
+            </figcaption>
+          </figure>
+          <%}%>
+        </div>
+    </div>
+  <%}%>
   <hr>
   <h3 class="myBooks">My Books</h3>
   <hr>
-
-  <div class="search_results">
-    <%for (var i = 0; i < books.length; i++){ %>
-      <div class="figure_div">
-        <figure class="figure-comp">
-          <img src="<%=books[i].cover%>" alt="No Cover Available" width="180" height="270">
-          <figcaption>
-            <%= books[i].title %>
-          </figcaption>
-        </figure>
-        <%}%>
-      </div>
-  </div>
-
+  <%if (myBooks.length > 0){ %>
+    <div class="search_results">
+      <%for (var i = 0; i < myBooks.length; i++){ %>
+        <div class="figure_div">
+          <figure class="figure-comp">
+            <img src="<%=myBooks[i].cover%>" alt="No Cover Available" width="180" height="270">
+            <figcaption>
+              <%= myBooks[i].title %>
+            </figcaption>
+          </figure>
+          <%}%>
+        </div>
+    </div>
+  <%}%>
 </body>
 </html>

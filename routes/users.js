@@ -6,6 +6,7 @@ require('../config/passport')(passport);
 
 
 router.get('/profile', usersController.getProfile);
+router.post('/profile', usersController.updateProfile);
 router.post('/signup', usersController.createNewUser);
 router.get('/logout', usersController.getLogout);
 router.post('/signin', passport.authenticate('local', {

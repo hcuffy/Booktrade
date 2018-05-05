@@ -19,10 +19,10 @@
 
 <body>
   <div class="profile-form">
-    <form action="/" method="post">
-      Full Name: <input class="profile-input" type="text" name="name" value=""><br>
-           City: <input class="profile-input" type="text" name="name" value=""><br>
-          State: <input class="profile-input" type="text" name="name" value=""><br>
+    <form action="/user/profile" method="post">
+      Full Name: <input class="profile-input" type="text" name="name" value="<%=user.name%>"><br>
+           City: <input class="profile-input" type="text" name="city" value="<%=user.city%>"><br>
+          State: <input class="profile-input" type="text" name="state" value="<%=user.state%>"><br>
                  <input type="submit" value="Submit">
     </form>
   </div>

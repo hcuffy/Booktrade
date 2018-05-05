@@ -23,7 +23,28 @@ exports.createNewUser = (req, res, next) => {
 }
 
 exports.getProfile = (req, res, next) => {
-    res.render('profile')
+
+  User.findById(req.user.id, (err, user) => {
+    if (err)
+      return next(err)
+
+    res.render('profile', {user})
+    });
+}
+
+exports.updateProfile = (req, res, next) => {
+ const { name, city, state } = req.body
+
+  User.findByIdAndUpdate(req.user.id, { $set: {name,city,state} }, {
+          new: true
+        }, function(err, user) {
+          if (err) {
+            console.log('Database Error', err)
+            return next(err)
+          }
+  res.render('profile', {user})
+  });
+
 }
 
 exports.getRegistration = (req, res, next) => {
