@@ -47,8 +47,18 @@ exports.getMyBooks = (req, res, next) => {
     }
     let myBooks  = books.filter( book => book.owner.includes(req.user.id));
     let reqBooks  = myBooks.filter( book => book.trader.length > 0);
-console.log(reqBooks);
     res.render('mybooks', {myBooks , reqBooks })
   });
+
+}
+
+exports.tradeRequest = (req, res, next) => {
+const { id}=req.body;
+
+Book.update({_id : id}, { $push: { trader: req.user.id } },  function (err, book) {
+  if (err) return check(err);
+
+  res.send(['OK'])
+});
 
 }

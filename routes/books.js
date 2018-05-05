@@ -6,5 +6,6 @@ const searchController = require('../controllers/search');
 router.get('/books', searchController.getAllBooks);
 router.get('/mybooks', searchController.getMyBooks);
 router.get('/search', searchController.getSearch);
+router.post('/trade', searchController.tradeRequest);
 
 module.exports = router;
