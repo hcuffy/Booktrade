@@ -69,3 +69,11 @@ hr {
   overflow: hidden;
   padding-left: 20px;
 }
+
+.req-label {
+  float: left;
+  margin-left: 20px;
+  padding: 0 10px;
+  overflow: hidden;
+  border: 1px solid black;
+}

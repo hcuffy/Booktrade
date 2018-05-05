@@ -21,6 +21,27 @@
 </nav>
 
 <body>
+  <hr>
+  <h3>
+   Outstanding Requests
+  </h3>
+<%if (myReq.length > 0){ %>
+  <div class="search_results">
+    <%for (var i = 0; i < myReq.length; i++){ %>
+      <div class="figure_div">
+          <label class="req-label">
+            <%= books[i].title %>
+          </label>
+        <%}%>
+      </div>
+  </div>
+<%}%>
+  <hr>
+  <h3>
+   All Books
+  </h3>
+  <hr>
+<%if (books.length > 0){ %>
   <div class="search_results">
     <%for (var i = 0; i < books.length; i++){ %>
       <div class="figure_div">
@@ -34,6 +55,7 @@
         <%}%>
       </div>
   </div>
+<%}%>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="/main.js"></script>
 </body>

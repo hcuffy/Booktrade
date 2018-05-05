@@ -7,7 +7,9 @@ exports.getAllBooks = (req, res, next) => {
   Book.find({}, (err, books) => {
     if (err)
       return next(err)
-    res.render('books', {books})
+ let myReq  = books.filter( book => book.trader.includes(req.user.id));
+
+    res.render('books', {books, myReq })
   });
 }
 
