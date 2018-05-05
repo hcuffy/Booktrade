@@ -19,7 +19,7 @@
 </nav>
 
 <body>
-  <form action="/search" method="get">
+  <form action="/book/search" method="get">
     Add Book: <input type="text" name="search">
     <input type="submit" value="Add">
   </form>
@@ -52,7 +52,7 @@
   <div class="search_results">
     <%for (var i = 0; i < books.length; i++){ %>
       <div class="figure_div">
-        <figure>
+        <figure class="figure-comp">
           <img src="<%=books[i].cover%>" alt="No Cover Available" width="180" height="270">
           <figcaption>
             <%= books[i].title %>

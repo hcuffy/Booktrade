@@ -8,8 +8,7 @@ figure {
 }
 
 .figure_div {
-  margin-left: 20px;
-  display: inline-block;
+  display: inline;
 }
 
 .search_results {
