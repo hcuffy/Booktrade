@@ -55,7 +55,8 @@
       <%for (var i = 0; i < accBooks.length; i++){ %>
         <div class="figure_div">
             <label class="req-label">
-              <%= accBooks[i].title %>
+              <%= accBooks[i].title%> Contact: <%= accBooks[i].accepted[0].requestor%>
+              <i id="<%=accBooks[i].id%>" class="fas fa-check-circle"></i>
             </label>
           <%}%>
         </div>

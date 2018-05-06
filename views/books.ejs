@@ -23,7 +23,7 @@
 <body>
   <hr>
   <h3>
-   Outstanding Requests
+   Outstanding Trade
   </h3>
 <%if (myReq.length > 0){ %>
   <div class="search_results">
@@ -36,6 +36,25 @@
       </div>
   </div>
 <%}%>
+
+<hr>
+<h3>
+Accepted Trade
+</h3>
+<hr>
+<%if (accBooks.length > 0){ %>
+  <div class="search_results">
+    <%for (var i = 0; i < accBooks.length; i++){ %>
+      <div class="figure_div">
+          <label class="req-label">
+            <%= accBooks[i].title%> Contact: <%= accBooks[i].accepted[0].acceptor%>
+          </label>
+        <%}%>
+      </div>
+  </div>
+<%}%>
+
+
   <hr>
   <h3>
    All Books
