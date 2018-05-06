@@ -1,87 +1,91 @@
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
-  <link href="/main.css" rel="stylesheet" type="text/css">
-  <title>My Books</title>
-</head>
 
-<nav>
-  <h3 style="padding-right: 140px;">
-    Book Trading Club
-  </h3>
-  <a href="/book/books"><button type="button" class="btn btn-primary">All Books</button></a>
-  <a href="/user/logout"><i class="fas fa-sign-out-alt"></i></a>
-  <a href="/user/profile"><i class="fas fa-user-circle"></i></a>
-</nav>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+    <link href="/main.css" rel="stylesheet" type="text/css">
+    <title>My Books</title>
+  </head>
 
-<body>
-  <form action="/book/search" method="get">
-    Add Book: <input type="text" name="search">
-    <input type="submit" value="Add">
-  </form>
-  <hr>
-  <h3>
-    Trade Requests
-  </h3>
-  <hr>
-  <%if (reqBooks.length > 0){ %>
-    <div class="search_results">
-      <%for (var i = 0; i < reqBooks.length; i++){ %>
-        <div class="request-div">
-          <figure class="figure-comp">
-            <button type="button" id="<%=reqBooks[i].id%>" class="btn btn-sm btn-outline-secondary">
-              <i class="fas fa-exchange-alt"> </i>
-            </button>
-            <img src="<%=reqBooks[i].cover%>" alt="No Cover Available" width="180" height="270">
-            <figcaption>
-              <%= reqBooks[i].title %>
-            </figcaption>
-          </figure>
-          <%}%>
-        </div>
-    </div>
-  <%}%>
-  <hr>
-  <h3>
-    Accepted Trades
-  </h3>
-  <hr>
-  <%if (accBooks.length > 0){ %>
-    <div class="search_results">
-      <%for (var i = 0; i < accBooks.length; i++){ %>
-        <div class="figure_div">
+  <nav>
+    <h3 style="padding-right: 140px;">
+      Book Trading Club
+    </h3>
+    <a href="/book/books"><button type="button" class="btn btn-primary">All Books</button></a>
+    <a href="/user/logout"><i class="fas fa-sign-out-alt"></i></a>
+    <a href="/user/profile"><i class="fas fa-user-circle"></i></a>
+  </nav>
+
+  <body>
+    <form action="/book/search" method="get">
+      Add Book: <input type="text" name="search">
+      <input type="submit" value="Add">
+    </form>
+    <hr>
+    <h3>
+      Trade Requests
+    </h3>
+    <hr>
+    <%if (reqBooks.length > 0){ %>
+      <div class="search_results">
+        <%for (var i = 0; i < reqBooks.length; i++){ %>
+          <div class="request-div">
+            <figure class="figure-comp">
+              <button type="button" id="<%=reqBooks[i].id%>" class="btn btn-sm btn-outline-secondary">
+                <i class="fas fa-exchange-alt"> </i>
+              </button>
+              <img src="<%=reqBooks[i].cover%>" alt="No Cover Available" width="180" height="270">
+              <figcaption>
+                <%= reqBooks[i].title %>
+              </figcaption>
+            </figure>
+            <%}%>
+          </div>
+      </div>
+    <%}%>
+    <hr>
+      <h3>
+        Accepted Trades
+      </h3>
+    <hr>
+    <%if (accBooks.length > 0){ %>
+      <div class="search_results">
+        <%for (var i = 0; i < accBooks.length; i++){ %>
+          <div class="figure_div">
             <label class="req-label">
-              <%= accBooks[i].title%> Contact: <%= accBooks[i].accepted[0].requestor%>
-              <i id="<%=accBooks[i].id%>" class="fas fa-check-circle"></i>
-            </label>
-          <%}%>
-        </div>
-    </div>
-  <%}%>
+            <%= accBooks[i].title%> Contact: <%= accBooks[i].accepted[0].requestor%>
+            <i id="<%=accBooks[i].id%>" class="fas fa-check-circle"></i>
+          </label>
+            <%}%>
+          </div>
+      </div>
+      <%}%>
 
-  <hr>
-  <h3 class="myBooks">My Books</h3>
-  <hr>
-  <%if (myBooks.length > 0){ %>
-    <div class="search_results">
-      <%for (var i = 0; i < myBooks.length; i++){ %>
-        <div class="figure_div">
-          <figure class="figure-comp">
-            <img src="<%=myBooks[i].cover%>" alt="No Cover Available" width="180" height="270">
-            <figcaption>
-              <%= myBooks[i].title %>
-            </figcaption>
-          </figure>
-          <%}%>
+      <hr>
+       <h3 class="myBooks">
+         My Books
+       </h3>
+      <hr>
+      <%if (myBooks.length > 0){ %>
+        <div class="search_results">
+          <%for (var i = 0; i < myBooks.length; i++){ %>
+            <div class="figure_div">
+              <figure class="figure-comp">
+                <img src="<%=myBooks[i].cover%>" alt="No Cover Available" width="180" height="270">
+                <figcaption>
+                  <%= myBooks[i].title %>
+                </figcaption>
+              </figure>
+              <%}%>
+            </div>
         </div>
-    </div>
-  <%}%>
+        <%}%>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/main.js"></script>
-</body>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/main.js"></script>
+  </body>
+
 </html>
