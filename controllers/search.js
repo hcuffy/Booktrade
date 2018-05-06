@@ -36,25 +36,41 @@ exports.getSearch = (req, res, next) => {
   let url = 'http://openlibrary.org/search.json?q='+ encodeURIComponent(req.query.search);
 
  axios.get(url).then(function (response) {
+
+if(response.data.num_found == 0){
+
+res.redirect('/book/myBooks')
+
+}
     let cover = 'http://covers.openlibrary.org/b/id/'+ response.data.docs[0].cover_i +'-M.jpg';
     let title = response.data.docs[0].title_suggest;
+    let user = req.user.username;
+Book.findOne({title : title}, (err, book) => {
+      if (err)
+        return next(err)
+    console.log( "This is blank " + book);
+      if (book == null ){
+        console.log("test1");
+        const newBook = new Book({title, cover , owner : [user], trader :[]})
+          newBook.save(err => {
+            if (err)
+            return next(err)
+          });
 
-console.log(response);
-// Book.find({title : title}, (err, book) => {
-//       if (err)
-//         return next(err)
-//       if (book.length > 0){
-//        res.redirect('/book/mybooks');
-//         return;
-//       }
-//
-// });
-    // const newBook = new Book({title, cover , owner : [req.user.username], trader :[]})
-    //   newBook.save(err => {
-    //     if (err)
-    //     return next(err)
-    //   });
-  //   res.redirect('/book/mybooks');
+      }else if(book.owner.includes(user)){
+
+        res.send();
+
+      }else if(!book.owner.includes(user)){
+        console.log("test3");
+        Book.update({title : title}, { $push: { owner: user} }, function (err, book) {
+          if (err) return next(err);
+         res.send();
+        });
+      }
+
+});
+     res.redirect('/book/mybooks');
 
   }).catch(function (error) {
     console.log(error);
