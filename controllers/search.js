@@ -1,18 +1,23 @@
 const axios = require('axios');
 const Book = require('../models/book')
 
-
-exports.getAllBooks = (req, res, next) => {
-  Book.find({}, (err, books) => {
-    if (err)
-      return next(err)
-    let myReq = books.filter(book => book.trader.includes(req.user.username));
-
-    function checkAcc(theBooks) {
+   function checkAccepted(username, theBooks) {
       let checkedBooks = [];
       theBooks.forEach(function (a) {
         a.accepted.forEach(function (b) {
-          if (b.requestor == req.user.username) {
+          if (b.acceptor == username) {
+            checkedBooks.push(a);
+          }
+        });
+      });
+      return checkedBooks;
+    }
+	
+	   function checkRequested(username, theBooks) {
+      let checkedBooks = [];
+      theBooks.forEach(function (a) {
+        a.accepted.forEach(function (b) {
+          if (b.requestor == username) {
             checkedBooks.push(a);
           }
         });
@@ -20,7 +25,13 @@ exports.getAllBooks = (req, res, next) => {
       return checkedBooks;
     }
 
-    let accBooks = checkAcc(books);
+	
+exports.getAllBooks = (req, res, next) => {
+  Book.find({}, (err, books) => {
+    if (err)
+      return next(err)
+    let myReq = books.filter(book => book.trader.includes(req.user.username));
+	let accBooks = checkRequested(req.user.username, books);
     res.render('books', { books, myReq, accBooks })
   });
 }
@@ -63,6 +74,8 @@ exports.getSearch = (req, res, next) => {
   });
 }
 
+ 
+
 exports.getMyBooks = (req, res, next) => {
   Book.find({}, (err, books) => {
     if (err) {
@@ -71,18 +84,8 @@ exports.getMyBooks = (req, res, next) => {
     let myBooks = books.filter(book => book.owner.includes(req.user.username));
     let reqBooks = myBooks.filter(book => book.trader.length > 0);
 
-    function checkAcc(theBooks) {
-      let checkedBooks = [];
-      theBooks.forEach(function (a) {
-        a.accepted.forEach(function (b) {
-          if (b.acceptor == req.user.username) {
-            checkedBooks.push(a);
-          }
-        });
-      });
-      return checkedBooks;
-    }
-    let accBooks = checkAcc(myBooks);
+
+    let accBooks = checkAccepted(req.user.username, myBooks);
     res.render('mybooks', { myBooks, reqBooks, accBooks })
   });
 }
