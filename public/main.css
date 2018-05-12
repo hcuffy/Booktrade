@@ -21,6 +21,11 @@ nav {
   margin-bottom: 30px;
 }
 
+.btn-primary {
+  float: right;
+  margin-right: 35%;
+}
+
 .figure-comp {
   display: inline-block;
   margin-left: 20px;
