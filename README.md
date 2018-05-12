@@ -2,6 +2,8 @@
 
 Follow this README in order to properly run this application.
 
+Live APP: https://fccbooktrade.herokuapp.com/
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
