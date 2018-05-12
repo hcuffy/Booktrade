@@ -2,7 +2,7 @@
 
 Follow this README in order to properly run this application.
 
-Live APP: https://fccbooktrade.herokuapp.com/
+Live App: https://fccbooktrade.herokuapp.com/
 
 ## Prerequisites
 
