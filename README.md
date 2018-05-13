@@ -4,7 +4,7 @@ Follow this README in order to properly run this application.
 
 Live App: https://fccbooktrade.herokuapp.com/
 
-## Prerequisites
+## Prerequisites for Local Installation.
 
 You will need the following things properly installed on your computer.
 
@@ -27,4 +27,4 @@ Installed locally.
 
 * DB - run `Mongod`
 * Backend run `node server.js`
-* Visit your app at [http://localhost:4200](http://localhost:3000).
+* Visit your app at [http://localhost:3000](http://localhost:3000).
